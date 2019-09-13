@@ -1,0 +1,164 @@
+﻿@{
+    Layout = null;
+}
+<head id="Head1">
+    <title>
+        Aventio-Landing Page
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link href="~/Content/Landing/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Landing/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="~/Content/Landing/css/landing-page.css" rel="stylesheet" />
+    <link href="~/Content/Landing/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/Landing/css/dashboard.css" rel="stylesheet" />
+
+    <script src="~/Content/Landing/js/jquery.js"></script>
+    <script src="~/Scripts/excanvas.min.js"></script>
+    <script src="~/Scripts/chart.min.js"></script>
+    <script src="~/Content/Landing/js/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/base.js"></script>
+    <script src="~/Scripts/Page/master.js"></script>
+
+
+</head>
+
+
+<body style="font-family: 'Segoe UI';">
+
+    <form method="post" id="form1">
+
+        <div class="container" style="margin-bottom:-10%">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-lg-12">
+
+
+                    <center>
+
+                        <h3 style="color:black">AVENTIO ERROR LOG KNOWLEDGE BASE SYSTEM</h3>
+                        <br />
+                        <h4 style="margin-top:-3%"><b><span id="date_time_2"></span></b></h4>
+                        <script type="text/javascript">window.onload = date_time_landing_page('date_time_2');</script>
+                        <img src=@ViewBag.ProfilePicURL alt="..." id="userImgMenu" style="height: 120px; width: 120px;" class="img-circle" />
+                        <h2 style="color: white; margin-top: -0.25%">Welcome,@ViewBag.Username !</h2>
+                        <h2 style="color: white; margin-top: -0.25%">@ViewBag.UserType</h2>
+                        <a href="@Url.Action("Index", "Login")" class="btn btn-primary"><i class="fa fa-power-off fa-fw"></i><span class="network-name">&nbsp;logout</span></a>
+
+                        <hr class="intro-divider" />
+
+                    </center>
+
+
+                </div>
+            </div>
+        </div>
+
+        @if (@ViewBag.UserType == "administrator")
+        {
+            <div class="main" style="margin-left:10%!important">
+                <div class="main-inner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="span6">
+                            </div>
+                            <div class="span10">
+                                <div class="widget">
+                                    <div class="widget-content">
+
+                                        <div id="divModuleHolder" class="shortcuts">
+                                           
+                                            <a href="@Url.Action("Index", "Domain")" class="shortcut"><i class="fa fa-institution fa-5x"></i><span class="shortcut-label"><b>Manage Domain</b></span> </a>
+                                            <a href="@Url.Action("Index", "Field")" class="shortcut"><i class="fa fa-list-alt fa-5x"></i><span class="shortcut-label"><b>Manage Field</b></span> </a>
+                                            <a href="@Url.Action("Index", "Client")" class="shortcut"><i class="fa fa-building fa-5x"></i><span class="shortcut-label"><b>Manage Client</b></span> </a>
+                                            <a href="@Url.Action("Index", "ErrorMgt")" class="shortcut"><i class="fa fa-remove fa-5x"></i><span class="shortcut-label"><b>Error Mangement</b></span> </a>
+                                            <a href="@Url.Action("Index", "SearchSolution")" class="shortcut"><i class="fa fa-search-plus fa-5x"></i><span class="shortcut-label"><b>Search Solution</b></span> </a>
+                                            <a href="@Url.Action("Index", "NewUser")" class="shortcut"><i class="fa fa-user fa-5x"></i><span class="shortcut-label"><b>Add New User</b></span> </a>
+                                            <a href="@Url.Action("Index", "UpdateUser")" class="shortcut"><i class="fa fa-user fa-5x"></i><span class="shortcut-label"><b>User Profile</b></span> </a>
+                                            <a href="@Url.Action("Index", "UserGroup")" class="shortcut"><i class="fa fa-group  fa-5x"></i><span class="shortcut-label"><b>User Group</b></span> </a>
+                                            <a href="@Url.Action("Index", "SystemUserDirectory")" class="shortcut"><i class="fa fa-file-text  fa-5x"></i><span class="shortcut-label"><b>User Directory</b></span> </a>
+                                            <a href="@Url.Action("Index", "UserMessage")" class="shortcut"><i class="fa fa-envelope  fa-5x"></i><span class="shortcut-label"><b>Message Portal</b></span> </a>
+                                            <a href="@Url.Action("Index", "TrendingErrors")" class="shortcut"><i class="fa fa-star fa-5x"></i><span class="shortcut-label"><b>Trending Errors</b></span> </a>
+                                            <a href="@Url.Action("Index", "RuntimeErrorTrace")" class="shortcut"><i class="fa fa-exclamation-circle  fa-5x"></i><span class="shortcut-label"><b>Runtime Error Trace</b></span> </a>
+                                            <a href="@Url.Action("Index", "DataMigration")" class="shortcut"><i class="fa fa-cloud-upload fa-5x"></i><span class="shortcut-label"><b>Migrate Data</b></span> </a>
+                                            
+                                         </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        else if (@ViewBag.UserType == "contributor")
+        {
+            <div class="main" style="margin-left:10%!important">
+                <div class="main-inner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="span6">
+                            </div>
+                            <div class="span10">
+                                <div class="widget">
+                                    <div class="widget-content">
+
+                                        <div id="divModuleHolder" class="shortcuts">
+                                            
+                                            <a href="@Url.Action("Index", "ErrorMgt")" class="shortcut"><i class="fa fa-remove fa-5x"></i><span class="shortcut-label"><b>Error Mangement</b></span> </a>
+                                            <a href="@Url.Action("Index", "SearchSolution")" class="shortcut"><i class="fa fa-search-plus fa-5x"></i><span class="shortcut-label"><b>Search Solution</b></span> </a>
+                                            <a href="@Url.Action("Index", "UpdateUser")" class="shortcut"><i class="fa fa-user fa-5x"></i><span class="shortcut-label"><b>User Profile</b></span> </a>
+                                            <a href="@Url.Action("Index", "UserMessage")" class="shortcut"><i class="fa fa-envelope  fa-5x"></i><span class="shortcut-label"><b>Message Portal</b></span> </a>
+                                            <a href="@Url.Action("Index", "TrendingErrors")" class="shortcut"><i class="fa fa-star fa-5x"></i><span class="shortcut-label"><b>Trending Errors</b></span> </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else if (@ViewBag.UserType == "searcher")
+        {
+            <div class="main" style="margin-left:10%!important">
+                <div class="main-inner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="span6">
+                            </div>
+                            <div class="span10">
+                                <div class="widget">
+                                    <div class="widget-content">
+
+                                        <div id="divModuleHolder" class="shortcuts">
+                                            <a href="@Url.Action("Index", "ErrorMgt")" class="shortcut"><i class="fa fa-remove fa-5x"></i><span class="shortcut-label"><b>Error Mangement</b></span> </a>
+                                            <a href="@Url.Action("Index", "SearchSolution")" class="shortcut"><i class="fa fa-search-plus fa-5x"></i><span class="shortcut-label"><b>Search Solution</b></span> </a>
+                                            <a href="@Url.Action("Index", "UpdateUser")" class="shortcut"><i class="fa fa-user fa-5x"></i><span class="shortcut-label"><b>User Profile</b></span> </a>
+                                            <a href="@Url.Action("Index", "UserMessage")" class="shortcut"><i class="fa fa-envelope  fa-5x"></i><span class="shortcut-label"><b>Message Portal</b></span> </a>
+                                            <a href="@Url.Action("Index", "TrendingErrors")" class="shortcut"><i class="fa fa-star fa-5x"></i><span class="shortcut-label"><b>Trending Errors</b></span> </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+
+
+
+    </form>
+
+</body>
+
+

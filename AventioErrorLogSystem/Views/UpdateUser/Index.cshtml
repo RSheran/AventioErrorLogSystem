@@ -1,0 +1,233 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/Page/UpdateUser.js"></script>
+<div class="container-fluid" id="logusercon">
+
+    <div class="page-header" style="margin-top: -10px">
+        <h1>
+            Update User Profile
+            <small>&nbsp;edit user profile details</small>
+        </h1>
+    </div>
+    <div class="col-md-10  col-sm-10 col-xs-10 col-md-offset-1 col-xs-offset-1 col-sm-offset-1">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                <div class="row">
+                    <div class="col-md-8 col-sm-8 col-xs-8">
+                        <div id="logUserEditName" style="font-size: 16px; font-weight: bold; margin-top: 5%; margin-left: 5%">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <button type="button" id="btnEditMode" class="btn btn-info">
+                            <i class="glyphicon glyphicon-pencil" style="margin-right: 10px; margin-top: 10%"></i>Edit
+                        </button>
+                    </div>
+                </div>
+                <hr />
+                <div style="margin-bottom: 10px" class="input-group">
+                    <span class="input-group-addon">Username</span>
+                    <input id="txtUsername" type="text" class="form-control" style="width: 100%"
+                      placeholder="" disabled="disabled" />
+
+                    <span class="input-group-addon " id="spanUName"></span>
+                </div>
+                @if (ViewBag.UserType == "administrator")
+                {
+                    <div style="margin-bottom: 10px" class="input-group">
+                        <span class="input-group-addon">User Type</span>
+                        <select id="drpUserType" type="text" class="form-control" style="width: 100%"
+                                placeholder=""></select>
+
+                        <span class="input-group-addon " id="spanUserType"></span>
+                    </div>
+                }
+                else
+                {
+                    <div style="margin-bottom: 10px" class="input-group">
+                        <span class="input-group-addon">User Type</span>
+                        <select id="drpUserType" type="text" class="form-control" style="width: 100%"
+                                placeholder="" disabled="disabled"></select>
+
+                        <span class="input-group-addon " id="spanUserType"></span>
+                    </div>
+                }
+
+                <div style="margin-bottom: 10px" class="input-group">
+                    <span class="input-group-addon">Full Name</span>
+                    <input id="txtFullName" type="text" class="form-control" style="width: 100%"
+                   placeholder="" disabled="disabled" />
+
+                    <span class="input-group-addon " id="spanFullName"></span>
+                </div>
+                <div style="margin-bottom: 10px" class="input-group">
+                    <span class="input-group-addon">Calling Name</span>
+                    <input id="txtCallingName" type="text" class="form-control" style="width: 100%"
+                           placeholder="" disabled="disabled" />
+
+                    <span class="input-group-addon " id="spanFullName"></span>
+                </div>
+                <div style="margin-bottom: 10px" class="input-group">
+                    <span class="input-group-addon" style="width: 18%">E-mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <input id="txtUserEmail" type="email" class="form-control" style="width: 100%"
+                     placeholder="E-Mail" disabled="disabled" />
+
+                    <span class="input-group-addon " id="spanEmail"></span>
+                </div>
+                @if (ViewBag.UserType == "administrator")
+                {
+                <div class="row" style="margin-left:-2%">
+
+                    <label class="col-sm-4 col-md-4 col-xs-4 control-label" style="text-align: left;">Is Active</label>
+                    <div class="col-sm-1 col-md-1 col-xs-1" style="margin-left: -5%;">
+                        <input id="chkIsUserActive" disabled="disabled" type="checkbox" />
+                    </div>
+
+                </div>
+                }
+
+                <div class="row" style="margin-top: 5%">
+                    <div id="errorStrip">
+                        <div class="alert alert-danger" role="alert" id="userAlert">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 5%">
+                    <div class="col-md-6 col-sm-6 col-xs-6 ">
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 ">
+                        <div style="float:right;">
+
+                            <button type="button" disabled="disabled" id="btnUpdateUser" class="btn btn-large btn-primary">
+                                <i class="glyphicon glyphicon-saved"></i>Update
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 2%">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default" id="changewd">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                <i class="glyphicon glyphicon-share-alt"></i>&nbsp;Change Password
+                                            </a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row" style="margin-left: 1%">
+                                            <div style="margin-bottom: 10px" class="input-group">
+                                                <span class="input-group-addon">Old Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                <input id="txtOldPassword" type="password" class="form-control" style="width: 100%"
+                                                 placeholder="Old Password" />
+
+                                                <span class="input-group-addon " id="spanOldPassword"></span>
+                                            </div>
+
+                                            <div style="margin-bottom: 10px" class="input-group">
+                                                <span class="input-group-addon">New Password &nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                <input id="txtPassword" type="password" class="form-control" style="width: 100%"
+                                                 placeholder="New Password" />
+
+                                                <span class="input-group-addon " id="spanPassword"></span>
+                                            </div>
+                                            <div style="margin-bottom: 10px" class="input-group">
+                                                <span class="input-group-addon">Confirm Password</span>
+                                                <input id="txtConPassword" type="password" class="form-control" style="width: 100%"
+                                                 placeholder="Confirm Password" />
+
+                                                <span class="input-group-addon " id="spanConPassword"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" style="margin-top: 5%;margin-left:1%">
+                                            <div id="errorStripPwd">
+                                                <div class="alert alert-danger" role="alert" id="userAlertPwd">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" style="margin-top: 5%">
+                                            <div class="col-md-6 col-sm-6 col-xs-6 ">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6 ">
+                                                <div style="float:right">
+
+                                                    <button type="button" id="btnUpdatePassword" class="btn btn-large btn-primary">
+                                                        <i class="glyphicon glyphicon-saved"></i>Update
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-4" style="margin-left: 2%">
+                <br />
+                <div style="border: 1px solid black; border-color: #428bca; text-align: center">
+
+                    <img src="../../Images/BlankProfilePic.png" alt="..." id="userImageEdit"
+                         class="img-circle" style="margin-top: 5%; height: 150px; width: 150px">
+                    <br />
+
+                    <div id="imgUploader">
+
+                        <input id="imgNew" name="input4[]" class="file" type="file" value="" accept=".png,.PNG,.jpg,.JPG,.jpeg,.JPEG,.bmp,.BMP ">
+                        <br />
+                        <button type="button" id="btnCancelUpload" class="btn btn-large btn-danger">
+                            <i class="glyphicon glyphicon-remove"></i>Cancel Upload
+                        </button>
+                    </div>
+
+                    <br />
+                    <div id="upload-button">
+                        <button type="button" id="btnUploadPhoto" class="btn btn-large btn-primary">
+                            <i class="glyphicon glyphicon-open"></i>Upload Photo
+                        </button>
+                    </div>
+                    <br />
+
+                    <button type="button" id="btnSaveProfilePic" class="btn btn-large btn-info" style="margin-bottom: 50px">
+                        <i class="glyphicon glyphicon-floppy-save"></i>Save Photo
+                    </button>
+                </div>
+
+                <br />
+            </div>
+
+            <div id="dvHiddenFields">
+
+                <input type="hidden" value=@ViewBag.AWSProfileName id="hdnAWSProfileName" runat="server" />
+                <input type="hidden" value=@ViewBag.AWSAccessKey id="hdnAWSAccessKey" runat="server" />
+                <input type="hidden" value=@ViewBag.AWSSecretKey id="hdnAWSSecretKey" runat="server" />
+                <input type="hidden" value=@ViewBag.BucketName id="hdnBucketName" runat="server" />
+                <input type="hidden" value=@ViewBag.BucketRegion id="hdnBucketRegion" runat="server" />
+                <input type="hidden" value=@ViewBag.BucketStartURL id="hdnBucketStartURL" runat="server" />
+
+                <input type="hidden" value=@ViewBag.Username id="hdnCurrentUserName" runat="server" />
+                <input type="hidden" value=@ViewBag.UserProfileImagePath id="hdnUserProfileImagePath" runat="server" />
+                <input type="hidden" value=@ViewBag.OtherUserProfileFilePath id="hdnOtherUserProfileFilePath" runat="server" />
+                <input type="hidden" value=@ViewBag.UserId id="hdnRedirectedUserId" runat="server" />
+
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,199 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 100%;               
+  background-color:#000000;
+  height: 2px;
+}
+</style>
+<script src="~/Scripts/Page/SearchSolution.js"></script>
+<div class="container-fluid">
+    <div class="row">
+        <div class="page-header" style="margin-top: -10px; margin-left: 2%">
+            <h2>
+                Search Solution
+                <small>&nbsp;search solutions for errors</small>
+            </h2>
+        </div>
+
+        <div id="form-solution" class="col-md-10 col-sm-10 col-xs-10">
+            <form class="form-horizontal">
+                @*<Hide the Search Controls if it is a explicit redirected instance from another page>*@
+                @if (@ViewBag.ErrorCode == null)
+                {
+                <div class="row" style="margin-left: 1%;">
+                    <div class="col-md-8 col-sm-8 col-xs-8">
+                        <div class="alert alert-info" id="dvNotice" style="margin-top:2%">
+                            <strong>Note!&nbsp;</strong><span id="spnNotice">You must search and click on an error to view the solution(s).</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8 col-sm-8 col-xs-8">
+                        <div id="errorStrip">
+                            <div class="alert alert-danger" role="alert" id="errorAlert">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                @*<div id="dvMasterControls">
+
+                    <div class="row" style="margin-left: 1%">
+                        <div class="col-md-7 col-sm-7 col-xs-7">
+                            <div style="margin-bottom: 10px" class="input-group">
+                                <span class="input-group-addon">Domain</span>
+                                <select class="form-control" id="drpDomain"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left: 1%">
+                        <div class="col-md-7 col-sm-7 col-xs-7">
+                            <div style="margin-bottom: 10px" class="input-group">
+                                <span class="input-group-addon">Field</span>
+                                <select class="form-control" id="drpField"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left: 1%">
+                        <div class="col-md-7 col-sm-7 col-xs-7">
+                            <div style="margin-bottom: 10px" class="input-group">
+                                <span class="input-group-addon">Client</span>
+                                <select class="form-control" id="drpClient"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>*@
+
+                <div class="row" style="margin-left:2%;">
+                    <div class="col-md-8 col-sm-8 col-xs-8">
+                        <div style="margin-bottom: 10px" class="input-group">
+                            <span class="input-group-addon">Search Text Here</span>
+                            <input id="txtSearchError" type="text" class="form-control" style="width: 100%" value="" placeholder="type error caption,error detail,domain,field or client" />
+                        </div>
+
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <div style="float:left">
+                            <button type="button" id="btnSearchError" class="btn btn-small btn-info"><i class="glyphicon glyphicon-search"></i></button>
+                            <button style="margin-left:-2%" type="button" id="btnReloadAll" class="btn btn-small btn-primary"><i class="glyphicon glyphicon-repeat"></i></button>
+                         </div>
+                        
+                    </div>
+                   
+                </div>
+                }
+                <hr/>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                       <div id="dvErrorList" style="overflow-y:scroll;overflow-x:hidden"></div>
+
+                    </div>
+                </div>
+                @*<div class="row">
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <div style="float: right">
+                            <button type="button" id="btnSearchError" class="btn btn-md btn-primary">
+                                <i class="glyphicon glyphicon-search"></i>&nbsp;Search Error
+                            </button>
+
+                        </div>
+                    </div>
+                </div>*@
+
+                <hr />
+
+                <div id="dvSearchedCaption">
+                    <h4 style="font-style:italic;">You searched for:</h4>
+                    <h5 style="font-weight:bolder"><span id="spnSearchedErrorCaption"></span></h5>
+                    <span id="spnSearchedErrorDetails"></span>
+                    <!--Section o bind who posted the error-->
+                    <div class="clearfix"/>
+                    <div id="dvErrorUserSection"></div>
+                </div>
+
+                <hr />
+
+               
+                <h3><span id="spnSolutionCount"></span></h3>
+                <br />
+                <div id="dvSolutionSegment">
+                    @*<Div to bind the solutions dynamically>*@
+                    <div id="dvSolutionList">
+
+                    </div>
+
+                </div>
+                <div id="dvHiddenFields">
+
+                    <input type="hidden" value=@ViewBag.ErrorCode id="hdnRedirectedErrorCode" runat="server" />
+                   
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="searchErrorModal" class="modal">
+
+        <div class="row" style="margin-left:1%">
+            <div class="col-md-10 col-sm-10 col-xs-10">
+                <div class="alert alert-info" id="dvNotice" style="margin-top:2%">
+                    <strong>Note!&nbsp;</strong><span id="spnNotice">Click on the row to select the specific error</span>
+                </div>
+            </div>
+            <div class="clearfix" />
+            <div class="col-md-10 col-md-offset-1" id="dvErrorSearchTable">
+                <table class="display table-bordered" id="tblSearchError" cellspacing="0" style="margin-top: 2%;width:100%">
+                    <thead>
+                        <tr>
+                            <th style="font-weight:bolder">Error Code</th>
+                            <th style="font-weight:bolder">Domain</th>
+                            <th style="font-weight:bolder">Field</th>
+                            <th style="font-weight:bolder">Client</th>
+                            <th style="font-weight:bolder">Error Caption</th>
+                            <th style="font-weight:bolder">Error Description</th>
+                            <th style="font-weight:bolder">Error Username</th>
+                            <th style="font-weight:bolder">Error FullName</th>
+                            <th style="font-weight:bolder">Error User Image URL</th>
+                            <th style="font-weight:bolder">Error Attachments</th>
+                            <th style="font-weight:bolder">Solutions</th>
+                            <th style="font-weight:bolder">Error Log Date</th>
+                           
+
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th style="font-weight:bolder">Error Code</th>
+                            <th style="font-weight:bolder">Domain</th>
+                            <th style="font-weight:bolder">Field</th>
+                            <th style="font-weight:bolder">Client</th>
+                            <th style="font-weight:bolder">Error Caption</th>
+                            <th style="font-weight:bolder">Error Description</th>
+                            <th style="font-weight:bolder">Error Username</th>
+                            <th style="font-weight:bolder">Error FullName</th>
+                            <th style="font-weight:bolder">Error User Image URL</th>
+                            <th style="font-weight:bolder">Solutions</th>
+                            <th style="font-weight:bolder">Error Log Date</th>
+                           
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

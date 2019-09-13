@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+
+    <script>
+        function myFunction(data) {
+            if (data == 1) {
+                setTimeout(function () {
+                    //location.reload(true);--Commented only for IE
+                    window.location = "/Login/Index";
+                }, 4000);
+            }
+            else {
+                setTimeout(function () {
+                    //location.reload(true);--Commented only for IE
+                    history.go(-1);
+                }, 4000);
+            }
+            return false;
+        }
+
+
+    </script>
+    @if (@ViewBag.ErrorMsg == "loginerr")
+    {
+
+        <img src="~/Images/sessionexpired.jpg" style="height: 650px; width: 650px" onload="myFunction(1)" />
+        @*<br />
+            <a href="Login">Go Back To Login...</a>*@
+
+    }
+    else if (@ViewBag.ErrorMsg == "pageloaderror")
+    {
+        <img src="~/Images/somethingwentwrong.jpg" style="height: 650px; width: 650px" onload="myFunction(1)" />
+    }
+    else
+    {
+
+        <img src="~/Images/sessionexpired.jpg"  onload="myFunction(1)" />
+
+
+    }
+</body>
+</html>

@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+    <link href="~/Content/font-awesome-4.3.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/dashboard.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="~/Scripts/jquery-ui-1.10.3.custom/css/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+    <link href="~/Content/jquery.multiselect.css" rel="stylesheet" />
+    <link href="~/Content/dashboard.css" rel="stylesheet" />
+    <link href="~/Scripts/inputTypes/css/fileinput.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/TableStyles/other/dataTables.fontAwesome.css" rel="stylesheet" />
+    <link href="~/Content/TableStyles/other/jquery.dataTables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/Chosen/chosen.css">
+    <link rel="stylesheet" href="~/Content/MessegesStyles.css">
+
+    <script src="~/Scripts/jquery-1.11.1.min.js"></script>
+    <script src="~/Scripts/jqgrid/js/grid.locale-en.js"></script>
+    <script src="~/Scripts/jqgrid/js/jquery.jqGrid.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/jquery.multiselect.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+    <script src="~/Scripts/inputTypes/js/fileinput.js"></script>
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <script src="~/Scripts/sweetalert-dev.js"></script>
+    <script src="~/Scripts/moment.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="~/Scripts/excanvas.min.js"></script>
+    <script src="~/Scripts/chart.min.js"></script>
+    <script src="~/Scripts/base.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="~/Content/TableStyles/other/jquery.dataTables.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.151.0.min.js"></script>
+    <script src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+    <script src="~/Scripts/btpagination.js"></script>
+    <script src="~/Scripts/jquery.ddslick.min.js"></script>
+    <script src="~/Content/Chosen/chosen.jquery.js"></script>
+
+    <script src="~/Scripts/Page/master.js"></script>
+
+    <link href="~/Content/site.css" rel="stylesheet" />
+
+
+    <title>Aventio by WebItPro Junior Team</title>
+
+
+</head>
+<body class="homepage" style="font-family: 'Segoe UI'">
+
+
+    <form id="form1">
+        <div>
+
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+
+                        <p style="font-family: 'Segoe UI'; font-size: x-large; color: white; margin-left: -5%"><i class="fa fa-list"></i>&nbsp;Aventio Error Log Knowledge Base System</p>
+
+                        <div class="nav-collapse">
+                            <ul class="nav pull-right">
+                                <li class="dropdown" style="margin-top: -26%">
+                                    @*@if (@ViewBag.RedirectedUserId=="0")
+                                        {*@
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <img src="../../Images/BlankProfilePic.png" alt="..." id="userImageMenu" style="height: 30px; width: 30px" class="img-rounded" />
+                                        <span id="userSalutation" style="font-size: 14px"></span>
+                                        <b class="caret"></b>
+                                    </a>
+                                    @*}*@
+
+                                    <ul class="dropdown-menu">
+
+                                        @if (@ViewBag.UserType == "administrator")
+                                        {
+                                            <li><a href="@Url.Action("Index", "Domain")" style="font-size: 16px">Domain</a></li>
+                                                    <li><a href="@Url.Action("Index", "Field")" style="font-size: 16px">Field</a></li>
+                                                    <li><a href="@Url.Action("Index", "Client")" style="font-size: 16px">Client</a></li>
+                                                    <li><a href="@Url.Action("Index", "ErrorMgt")" style="font-size: 16px">Error Management</a></li>
+                                                    <li><a href="@Url.Action("Index", "SearchSolution")" style="font-size: 16px">Search Solution</a></li>
+                                                    <li><a href="@Url.Action("Index", "NewUser")" style="font-size: 16px">Add New User</a></li>
+                                                    <li><a href="@Url.Action("Index", "UpdateUser")" style="font-size: 16px">User Profile</a></li>
+                                                    <li><a href="@Url.Action("Index", "UserGroup")" style="font-size: 16px">User Group</a></li>
+                                                    <li><a href="@Url.Action("Index", "SystemUserDirectory")" style="font-size: 16px">User Directory</a></li>
+                                                    <li><a href="@Url.Action("Index", "UserMessage")" style="font-size: 16px">User Message</a></li>
+                                                    <li><a href="@Url.Action("Index", "TrendingErrors")" style="font-size: 16px">Trending Errors</a></li>
+                                                    <li><a href="@Url.Action("Index", "RuntimeErrorTrace")" style="font-size: 16px">Runtime Error Trace</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="@Url.Action("Index", "LandingPage")" style="font-size: 16px"><i class="fa fa-home"></i>&nbsp;HOME</a></li>
+                                                    <li><a href="@Url.Action("Index", "Login")" style="font-size: 16px"><i class="fa fa-power-off"></i>&nbsp;LOGOUT</a></li>
+
+                                        }
+
+                                        else if (@ViewBag.UserType == "contributor")
+                                        {
+
+                                            <li><a href="@Url.Action("Index", "ErrorMgt")" style="font-size: 16px">Error Management</a></li>
+                                                    <li><a href="@Url.Action("Index", "SearchSolution")" style="font-size: 16px">Search Solution</a></li>
+                                                    <li><a href="@Url.Action("Index", "UserMessage")" style="font-size: 16px">User Message</a></li>
+                                                    <li><a href="@Url.Action("Index", "TrendingErrors")" style="font-size: 16px">Trending Errors</a></li>
+                                                    <li><a href="@Url.Action("Index", "UpdateUser")" style="font-size: 16px">User Profile</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="@Url.Action("Index", "LandingPage")" style="font-size: 16px"><i class="fa fa-home"></i>&nbsp;HOME</a></li>
+                                                    <li><a href="@Url.Action("Index", "Login")" style="font-size: 16px"><i class="fa fa-power-off"></i>&nbsp;LOGOUT</a></li>
+                                        }
+                                        else if (@ViewBag.UserType == "searcher")
+                                        {
+
+                                            <li><a href="@Url.Action("Index", "ErrorMgt")" style="font-size: 16px">Error Management</a></li>
+                                                    <li><a href="@Url.Action("Index", "SearchSolution")" style="font-size: 16px">Search Solution</a></li>
+                                                    <li><a href="@Url.Action("Index", "UserMessage")" style="font-size: 16px">User Message</a></li>
+                                                    <li><a href="@Url.Action("Index", "TrendingErrors")" style="font-size: 16px">Trending Errors</a></li>
+                                                    <li><a href="@Url.Action("Index", "UpdateUser")" style="font-size: 16px">User Profile</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="@Url.Action("Index", "LandingPage")" style="font-size: 16px"><i class="fa fa-home"></i>&nbsp;HOME</a></li>
+                                                    <li><a href="@Url.Action("Index", "Login")" style="font-size: 16px"><i class="fa fa-power-off"></i>&nbsp;LOGOUT</a></li>
+                                        }
+
+
+
+                                    </ul>
+
+                                </li>
+
+
+
+                            </ul>
+                            <ul class="nav pull-right">
+                                <li class="dropdown" style="margin-top: -20%; margin-left: -20%">
+                                    <b><span id="date_time_2"></span></b>
+                                    <script type="text/javascript">window.onload = date_time_landing_page('date_time_2');</script>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div id="headFreme" class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                <div class="panel panel-primary">
+
+
+                    <div class="panel-body">
+                        @RenderBody()
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="navbar navbar-toggle">
+                <div class="footer">
+                    <div class="footer-inner">
+                        <div class="container">
+                            <div class="row">
+                                <div class="span12">
+                                    &copy; @DateTime.Now.Year RSR Solutions
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>

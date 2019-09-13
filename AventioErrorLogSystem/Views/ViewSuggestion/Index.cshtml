@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/Page/ViewUserSuggestion.js"></script>
+<div class="container-fluid">
+    <div id="dvUserSessionLog">
+
+        <div class="row" style="margin-left: 1%">
+            <div class="col-md-7 col-sm-7 col-xs-7">
+                <div style="margin-bottom: 10px" class="input-group">
+                    <span class="input-group-addon">User</span>
+                    <select class="form-control" id="drpUser"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-left:2%;overflow-x:scroll" id="dvUserSessionTable">
+            <table class="display table-bordered" id="tblUserSessionLog" cellspacing="0" style="margin-top: 10%">
+                <thead>
+                    <tr>
+
+                        <th style="font-weight:bold">UserSessionLogId</th>
+                        @*<th style="font-weight:bold">UserId</th>
+                        <th style="font-weight:bold">Profile Picture</th>*@
+                        @*<th style="font-weight:bold">Username</th>
+                            <th style="font-weight:bold">User Group</th>
+                            <th style="font-weight:bold">Full Name</th>
+                            <th style="font-weight:bold">Calling Name</th>
+                            <th style="font-weight:bold">Logged In Time</th>
+                            <th style="font-weight:bold">Logged Off Time</th>*@
+
+
+
+                    </tr>
+                </thead>
+
+
+            </table>
+        </div>
+
+
+    </div>
+</div>
+    
+

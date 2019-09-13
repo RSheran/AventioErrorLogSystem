@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AventioErrorLogSystem", "AventioErrorLogSystem\AventioErrorLogSystem.csproj", "{A65CE61F-5BBA-4183-8FC8-FD3409A85A6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorLogDataAccess", "ErrorLogDataAccess\ErrorLogDataAccess.csproj", "{2B053B63-4EB9-4FF9-940E-68B55DF574E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorLogBusinessLogic", "ErrorLogBusinessLogic\ErrorLogBusinessLogic.csproj", "{B15B6E9F-3CEA-4229-ADA2-85924682A9ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A65CE61F-5BBA-4183-8FC8-FD3409A85A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A65CE61F-5BBA-4183-8FC8-FD3409A85A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A65CE61F-5BBA-4183-8FC8-FD3409A85A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A65CE61F-5BBA-4183-8FC8-FD3409A85A6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B053B63-4EB9-4FF9-940E-68B55DF574E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B053B63-4EB9-4FF9-940E-68B55DF574E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B053B63-4EB9-4FF9-940E-68B55DF574E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B053B63-4EB9-4FF9-940E-68B55DF574E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B15B6E9F-3CEA-4229-ADA2-85924682A9ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B15B6E9F-3CEA-4229-ADA2-85924682A9ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B15B6E9F-3CEA-4229-ADA2-85924682A9ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B15B6E9F-3CEA-4229-ADA2-85924682A9ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://rsrbespokeprojects.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = AventioErrorLogSystem\\AventioErrorLogSystem.csproj
+		SccProjectName1 = AventioErrorLogSystem
+		SccLocalPath1 = AventioErrorLogSystem
+		SccProjectUniqueName2 = ErrorLogBusinessLogic\\ErrorLogBusinessLogic.csproj
+		SccProjectName2 = ErrorLogBusinessLogic
+		SccLocalPath2 = ErrorLogBusinessLogic
+		SccProjectUniqueName3 = ErrorLogDataAccess\\ErrorLogDataAccess.csproj
+		SccProjectName3 = ErrorLogDataAccess
+		SccLocalPath3 = ErrorLogDataAccess
+	EndGlobalSection
+EndGlobal

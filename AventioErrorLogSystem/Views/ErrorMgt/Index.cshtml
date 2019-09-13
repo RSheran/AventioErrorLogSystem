@@ -1,0 +1,379 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<script src="styles/TableStyles/other/jquery-1.12.4.js"></script>*@
+<script src="~/Scripts/Page/ErrorMgt.js"></script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="page-header" style="margin-top: -10px; margin-left: 2%">
+            <h2>
+                Error Management
+                <small>&nbsp;add/edit errors</small>
+            </h2>
+        </div>
+
+        <div id="form-error" class="col-md-10 col-sm-10 col-xs-10">
+            <form class="form-horizontal">
+
+                @if (@ViewBag.UserType == "administrator" || @ViewBag.UserType == "contributor")
+                {
+                <div class="row" style="margin-left: 2%">
+
+                    <button type="button" id="btnErrorOnly" class="btn btn-md btn-info">
+                        <i class="glyphicon glyphicon-open"></i> Add Error Only
+                    </button>
+                    <button type="button" style="margin-left: 1%" id="btnErrorWithSol" class="btn btn-md btn-info">
+                        <i class="glyphicon glyphicon-saved"></i>  Add Error With Solution
+                    </button>
+                    <button type="button" id="btnSolution" style="margin-left: 1%" class="btn btn-md btn-info">
+                        <i class="glyphicon glyphicon-plus"></i>  Add Solution To Error
+                    </button>
+
+
+                </div>
+                }
+                else
+                {
+                    <div class="row" style="margin-left: 2%">
+
+                        <button type="button" id="btnErrorOnly" class="btn btn-md btn-info">
+                            <i class="glyphicon glyphicon-open"></i> Add Error Only
+                        </button>
+                      
+
+
+                    </div>
+                }
+
+                <div class="row" style="margin-left: 1%">
+                    <div class="col-md-10 col-sm-10 col-xs-10">
+                        <div class="alert alert-info" id="dvNotice" style="margin-top:2%">
+                            <strong>Note!&nbsp;</strong><span id="spnNotice">If the domain or field you are looking for, is not found,please contact the administrator</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-10 col-sm-10 col-xs-10">
+                        <div class="alert alert-danger" id="showError">
+                            <strong>Error!&nbsp;</strong><span id="ErrorMessage"></span>
+                        </div>
+                    </div>
+                       
+                 </div>
+
+                <div class="row" style="margin-left: 1%;margin-top:1%">
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <a>
+                            <div id="dvShowlabelMeanings" style="cursor: pointer;color:red"><b><i class="glyphicon glyphicon-info-sign"></i>&nbsp;Click here to see label meanings</b></div>
+                        </a>
+                    </div>
+                </div>
+
+                
+                <div class="row" style="margin-left: 1%">
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <div style="margin-bottom: 10px" class="input-group">
+                            <span class="input-group-addon">Error Code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <input id="txtErrorCode" type="text" class="form-control txt_length_10" style="width: 100%"
+                                   placeholder="" disabled="disabled" />
+                            <span class="input-group-addon " id="spn-txtErrorCode"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2">
+                        <div id="dvSearchErrorCaption">
+                            <button type="button" id="btnSearchError" class="btn btn-md btn-primary">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="dvMasterControls">
+
+                    <div class="row" style="margin-left: 1%">
+                        <div class="col-md-7 col-sm-7 col-xs-7">
+                            <div style="margin-bottom: 10px" class="input-group">
+                                <span class="input-group-addon">Domain</span>
+                                <select class="form-control" id="drpDomain"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left: 1%">
+                        <div class="col-md-7 col-sm-7 col-xs-7">
+                            <div style="margin-bottom: 10px" class="input-group">
+                                <span class="input-group-addon">Field</span>
+                                <select class="form-control" id="drpField"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left: 1%">
+                        <div class="col-md-7 col-sm-7 col-xs-7">
+                            <div style="margin-bottom: 10px" class="input-group">
+                                <span class="input-group-addon">Client</span>
+                                <select class="form-control" id="drpClient"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+              
+
+                <div class="row" style="margin-left: 1%">
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <div style="margin-bottom: 10px" class="input-group">
+                            <span class="input-group-addon">Error Caption</span>
+                            <textarea id="txtErrorCaption" type="text" class="form-control" style="width: 100%"
+                                      placeholder="Error Caption"></textarea>
+
+                            <span class="input-group-addon" id="spn-txtErrorCaption"></span>
+                        </div>
+                    </div>
+                 
+                </div>
+                <div class="row" style="margin-left: 1%">
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <div style="margin-bottom: 10px" class="input-group">
+                            <span class="input-group-addon">Error Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <textarea id="txtErrorDescription" type="text" class="form-control" style="width: 100%"
+                                      placeholder="Error Description"></textarea>
+
+                            <span class="input-group-addon " id="spn-txtDomainDescription"></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="dvErrorAttachment">
+                    <div class="row" style="margin-left: 1%">
+                        <div class="col-md-7 col-sm-7 col-xs-7">
+                            <div style="margin-bottom: 10px" class="input-group">
+                                <span class="input-group-addon">Error Attachment(s)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <input id="fileUpErrorAttachment" name="input4[]" class="file" type="file" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*" multiple="multiple" />
+                              
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+               
+                <div id="dvSolution">
+
+                    <div class="row" style="margin-left: 1%">
+                        <div class="col-md-7 col-sm-7 col-xs-7">
+                            <div style="margin-bottom: 10px" class="input-group">
+                                <span class="input-group-addon">Solution Code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <input id="txtSolutionCode" type="text" class="form-control txt_length_10" style="width: 100%"
+                                       placeholder="" disabled="disabled" />
+                                <span class="input-group-addon " id="spn-txtSolutionCode"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-left: 1%">
+                        <div class="col-md-7 col-sm-7 col-xs-7">
+                            <div style="margin-bottom: 10px" class="input-group">
+                                <span class="input-group-addon">Solution&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <textarea id="txtSolution" type="text" class="form-control" style="width: 100%"
+                                       placeholder="Solution Description"></textarea>
+
+                                <span class="input-group-addon " id="spn-txtSolutionDescription"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-left: 1%">
+                        <div class="col-md-7 col-sm-7 col-xs-7">
+                            <div style="margin-bottom: 10px" class="input-group">
+                                <span class="input-group-addon">Solution Attachment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <input id="fileUpSolutionAttachment" name="input4[]" class="file" type="file" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*" multiple="multiple" />
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="dvHiddenFields">
+                                        
+                    <input type="hidden" value=@ViewBag.AWSProfileName  id="hdnAWSProfileName" runat="server" />
+                    <input type="hidden" value=@ViewBag.AWSAccessKey  id="hdnAWSAccessKey" runat="server" />
+                    <input type="hidden" value=@ViewBag.AWSSecretKey  id="hdnAWSSecretKey" runat="server" />
+                    <input type="hidden" value=@ViewBag.BucketName id="hdnBucketName" runat="server" />
+                    <input type="hidden" value=@ViewBag.BucketRegion  id="hdnBucketRegion" runat="server" />
+                    <input type="hidden" value=@ViewBag.BucketStartURL  id="hdnBucketStartURL" runat="server" />
+
+                    <input type="hidden" value=@ViewBag.ErrorImagePath id="hdnErrorImagePath" runat="server" />
+                    <input type="hidden" value=@ViewBag.OtherErrorFilePath id="hdnOtherErrorFilePath" runat="server" />
+                    <input type="hidden" value=@ViewBag.SolutionImagePath id="hdnSolutionImagePath" runat="server" />
+                    <input type="hidden" value=@ViewBag.OtherSolutionFilePath id="hdnOtherSolutionFilePath" runat="server" />
+
+                    <input type="hidden" value=@ViewBag.RedirectedErrorCode id="hdnRedirectedErrorCode" runat="server" />
+                   
+                </div>
+
+            
+
+
+                <div class="row">
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <div style="float: right">
+                            <button type="button" id="btnReset" class="btn btn-large btn-warning">
+                                Reset
+                            </button>
+
+                            <button type="button" id="btnSave" class="btn btn-large btn-primary">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div id="errorLabelMeaningModal" class="modal">
+
+        <div class="row" style="margin-left:1%">
+            <h3>Label Meanings</h3>
+            <hr />
+
+            <div class="col-md-11 col-sm-11 col-xs-11 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4"  style="margin-top:-2%">
+                        <h4><span class="label label-default">Domain</span></h4>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <p>
+                            The main project/system to which the error<br />
+                            is relevant to(Ex:-HRIS,tbBoss,Tea System)
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4" style="margin-top:-2%">
+                        <h4><span class="label label-default">Field</span></h4>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <p>
+                            The target language,platform,IDE or technical component<br />
+                            to which the error is relevant to.(Ex:-C#,Vb.net,Visual Studio,SQL Server,IIS..etc)
+                        </p>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4"  style="margin-top:-2%">
+                        <h4><span class="label label-default">Client</span></h4>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <p>
+                            The specific client to which the error is relevant.<br />
+                            If it's a general error,selecting the client is not mandatory
+                        </p>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4"  style="margin-top:-2%">
+                        <h4><span class="label label-default">Error Caption</span></h4>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <p>
+                            The error as a highlight as short as possible
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4"  style="margin-top:-2%">
+                        <h4><span class="label label-default">Error Description</span></h4>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <p>
+                            Other details relevant to the error
+
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4"  style="margin-top:-2%">
+                        <h4><span class="label label-default">Error Attachment(s)</span></h4>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <p>
+                            The relevant image(s) that emphasizes the error
+
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4"  style="margin-top:-2%">
+                        <h4><span class="label label-default">Solution</span></h4>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <p>
+                            The most relevant and precise answer/fix/remedy for the error
+
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4"  style="margin-top:-2%">
+                        <h4><span class="label label-default">Solution Attachment(s)</span></h4>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <p>
+                            The relevant image(s) that emphasizes the solution
+
+                        </p>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    
+    <div id="searchErrorModal" class="modal">
+
+        <div class="row" style="margin-left:1%">
+            <div class="col-md-10 col-sm-10 col-xs-10">
+                <div class="alert alert-info" id="dvNotice" style="margin-top:2%">
+                    <strong>Note!&nbsp;</strong><span id="spnNotice">Click on the row to select the specific error</span>
+                </div>
+            </div>
+            <div class="clearfix"/>
+            <div class="col-md-8 col-sm-8 col-xs-8">
+                <div style="margin-bottom: 10px" class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    <input id="txtSearchError" type="text" class="form-control" style="width: 100%" value="" placeholder="type error caption,error detail,domain,field or client" />
+                </div>
+
+            </div>
+            <hr />
+            <div class="row" style="margin-left:2%">
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                    <div id="dvErrorList" style="overflow-y:scroll;overflow-x:hidden"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+

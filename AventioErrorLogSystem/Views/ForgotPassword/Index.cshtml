@@ -1,0 +1,161 @@
+﻿@model AventioErrorLogSystem.Models.ForgotPasswordViewModel
+@{
+    Layout = null;
+}
+
+
+<head>
+    <title>Forgot password-Password Recovery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+    <link href="~/Content/font-awesome-4.3.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/dashboard.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="~/Scripts/jquery-ui-1.10.3.custom/css/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+    <link href="~/Content/jquery.multiselect.css" rel="stylesheet" />
+    <link href="~/Content/dashboard.css" rel="stylesheet" />
+    <link href="~/Scripts/inputTypes/css/fileinput.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/TableStyles/other/dataTables.fontAwesome.css" rel="stylesheet" />
+    <link href="~/Content/TableStyles/other/jquery.dataTables.min.css" rel="stylesheet" />
+
+
+    <script src="~/Scripts/jquery-1.11.1.min.js"></script>
+    <script src="~/jqgrid/js/grid.locale-en.js"></script>
+    <script src="~/jqgrid/js/jquery.jqGrid.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.multiselect.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+    <script src="~/Scripts/inputTypes/js/fileinput.js"></script>
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <script src="~/Scripts/sweetalert-dev.js"></script>
+    <script src="~/Scripts/moment.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="~/Scripts/excanvas.min.js"></script>
+    <script src="~/Scripts/chart.min.js"></script>
+    <script src="~/Scripts/base.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="~/Content/TableStyles/other/jquery.dataTables.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.151.0.min.js"></script>
+    <script src="~/Scripts/Page/master.js"></script>
+
+    <link href="~/Content/site.css" rel="stylesheet" />
+
+</head>
+<body style="background: url('') no-repeat center center fixed !important;font-family: 'Segoe UI'">
+
+    <div class="container-fluid">
+
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+
+                   <p style="font-family: 'Segoe UI'; font-size: x-large; color: white; margin-left: -5%"><i class="fa fa-list"></i>&nbsp;Aventio Error Log Knowledge Base System</p>
+
+
+                    <div class="nav-collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown" style="margin-top: -26%">
+                              
+                               
+
+                            </li>
+
+
+
+                        </ul>
+                        <ul class="nav pull-right">
+                            <li class="dropdown" style="margin-top: -20%; margin-left: -20%">
+                                <b><span id="date_time_2"></span></b>
+                                <script type="text/javascript">window.onload = date_time_landing_page('date_time_2');</script>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-left: 2%">
+
+            <div class="col-md-6 col-sm-6 col-xs-6">
+
+                <div class="page-header" style="margin-top: -10px; margin-left: 2%">
+                    <h1>Recover Password </h1>
+
+                </div>
+                @using (Html.BeginForm("AuthenticatePasswordReset", "ForgotPassword", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h4>Enter following credentials to recover password :</h4>
+
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            @Html.LabelFor(m => m.Username, new { @class = "col-md-3 control-label" })
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-6" style="margin-left: -5%">
+
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Username)
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: left">
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            @Html.LabelFor(m => m.EMail, new { @class = "col-md-3 control-label" })
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-6" style="margin-left: -5%">
+                            @Html.TextBoxFor(m => m.EMail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EMail)
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="text-align: left">
+
+
+                        <div class=" form-group col-md-9 col-sm-9 col-xs-9">
+                            &nbsp;@if (TempData["notice"] != null)
+                            {
+                                <div class="alert alert-danger" role="alert" id="userAlert"><i class="glyphicon glyphicon-info-sign"></i>&nbsp; @TempData["notice"]</div>
+                            }
+                            else if (TempData["success"] != null)
+                            {
+                                <div class="alert alert-success" role="alert" id="userAlert"><i class="glyphicon glyphicon-info-sign"></i>&nbsp; @TempData["success"] &nbsp; <a href="@Url.Action("Index", "Login")"><b>Go back to the Log in Page</b></a></div>
+                            }
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6" style="margin-left:10%">
+                            <input type="submit" value="Send Temperory Password" class="btn btn-info" />
+                        </div>
+                    </div>
+
+
+
+                }
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</body>
+

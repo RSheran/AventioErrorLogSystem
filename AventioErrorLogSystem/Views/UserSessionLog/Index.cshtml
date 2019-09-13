@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/Page/UserSessionLog.js"></script>
+<style type="text/css">
+
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="page-header" style="margin-top: -10px; margin-left: 2%">
+            <h3>
+                User Session Log
+                <small>&nbsp;view/delete user session logs</small>
+            </h3>
+        </div>
+        <div id="form-domain" class="col-md-12 col-sm-12 col-xs-12">
+            <form class="form-horizontal">
+
+                <div class="row" style="margin-left: 2%">
+
+                    <a type="button" href="@Url.Action("Index", "SystemUserDirectory")" id="btnUserDirectory" class="btn btn-md btn-info">
+                        <i class="glyphicon glyphicon-list"></i> User Directory
+                    </a>
+                    <a type="button" href="@Url.Action("Index", "UserSessionLog")" style="margin-left: 1%" id="btnUserLogSession" class="btn btn-md btn-info active">
+                        <i class="glyphicon glyphicon-dashboard"></i> Session Log Details
+                    </a>
+
+
+
+                </div>
+                <hr />
+                <div class="clearfix"></div>
+
+                <div class="row" style="margin-left:2%;">
+                    <div class="alert alert-danger col-md-8 col-sm-6 col-xs-4" role="alert" id="dvAlert">
+                        <i class="glyphicon glyphicon-info-sign"></i>&nbsp;
+                    </div>
+                </div>
+
+
+                <div id="dvUserSessionLog">
+
+                    <div class="row" style="margin-left: 1%">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div style="margin-bottom: 10px" class="input-group">
+                                @*<span class="input-group-addon">User</span>*@
+                                <select class="form-control" id="drpUser"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-left:2%;overflow-x:scroll" id="dvUserSessionTable">
+                        <table class="display table-bordered" id="tblUserSessionLog" cellspacing="0" style="margin-top: 10%">
+                            <thead>
+                                <tr>
+
+                                    <th style="font-weight:bold">UserSessionLogId</th>
+                                    <th style="font-weight:bold">UserId</th>
+                                    <th style="font-weight:bold"></th>
+                                    <th style="font-weight:bold">Username</th>
+                                    <th style="font-weight:bold">User Group</th>
+                                    <th style="font-weight:bold">Full Name</th>
+                                    <th style="font-weight:bold">Calling Name</th>
+                                    <th style="font-weight:bold">IP Address</th>
+                                    <th style="font-weight:bold"></th>
+                                    <th style="font-weight:bold">Country</th>
+                                    <th style="font-weight:bold">City</th>
+                                    <th style="font-weight:bold">Region</th>
+                                    <th style="font-weight:bold">Logged In Time</th>
+                                    <th style="font-weight:bold">Logged Off Time</th>
+
+
+
+                                </tr>
+                            </thead>
+
+
+                        </table>
+                    </div>
+
+                    <div class="row">
+                        <div style="float: right;margin-top:2%" id="dvBtnControlGroup">
+                            <button type="button" id="btnRefresh" class="btn btn-md btn-primary" style="margin-right: 10px">
+                                <i class="glyphicon glyphicon-refresh"></i>&nbsp;Refresh
+                            </button>
+                            
+                            <button type="button" id="btnClearSesssion" class="btn btn-md btn-info">
+                               <i class="fa fa-eraser"></i>&nbsp; Clear Session Details
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

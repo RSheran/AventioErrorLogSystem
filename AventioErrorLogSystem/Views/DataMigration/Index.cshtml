@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/Page/DataMigration.js"></script>
+<div class="container-fluid">
+    <div class="row">
+        <div class="page-header" style="margin-top: -10px; margin-left: 2%">
+            <h3>
+                Data Migration and AWS Storage ReAllocation
+                <small>&nbsp;migrate data to another mongo cluster/Change AWS Bucket URL</small>
+            </h3>
+        </div>
+
+        <div id="form-Field" class="col-md-10 col-sm-10 col-xs-10">
+            <form class="form-horizontal">
+                <div class="row col-md-7 col-sm-7 col-xs-7" style="margin-left:2%">
+                    <div id="errorStrip">
+                        <div class="alert alert-danger" role="alert" id="userAlertErr">
+                        </div>
+                    </div>
+                    <div id="successStrip">
+                        <div class="alert alert-success" role="alert" id="userAlertSuccess">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-left: 1%">
+                    <div class="col-md-8 col-sm-8 col-xs-8">
+                        <div style="margin-bottom: 10px" class="input-group">
+                            <span class="input-group-addon">Target DB URL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <textarea id="txtTargetDbURL" type="text" class="form-control" style="width: 100%"
+                                      placeholder="Target URL"></textarea>
+                            <span class="input-group-addon " id="spn-txtTargetDbURL"></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row" style="margin-left: 1%">
+                  
+                    <div id="dvCollectionList">
+                       
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-sm-8 col-xs-8">
+                        <div style="float: right">
+                            <button type="button" id="btnReset" class="btn btn-large btn-warning" style="margin-right: 10px">
+                                Reset
+                            </button>
+                            <button type="button" id="btnChkConnection" class="btn btn-large btn-primary">
+                                Check Connection
+                            </button>
+                            <button type="button" disabled="disabled" id="btnMigrate" class="btn btn-large btn-primary">
+                                Migrate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

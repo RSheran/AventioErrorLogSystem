@@ -1,0 +1,75 @@
+<style > body {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.container1 {
+    border: 2px solid #dedede;
+    background-color: #FFF;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.darker1 {
+    border-color: #020a4e;
+}
+
+.container1::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.container1 img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.container1 img.right {
+        float: right;
+        margin-left: 20px;
+        margin-right: 0;
+}
+
+.SentBackground{
+    background-color: #dedede; 
+}
+
+.ReciveBackground{
+    background-color: #717288; 
+}
+
+
+.IsNotSent{
+    float: right;
+    margin-right: 20px;
+    text-align:right;
+    
+}
+
+.IsNotRead{
+    border: 2px solid #020a4e;
+}
+
+.IsSent{
+    float: left;
+    margin-left: 20px;
+    text-align:left;
+}
+
+.IsSent-Time{
+    float: right;
+    color: #000;  
+}
+
+.IsNotSent-Time{
+    float: left;
+    color: #000;  
+}
+
+</style >

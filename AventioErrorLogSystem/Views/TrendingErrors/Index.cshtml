@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/Page/TrendingErrors.js"></script>
+<div class="container-fluid">
+    <div class="row">
+        <div class="page-header" style="margin-top: -10px; margin-left: 2%">
+            <h3>
+                View Top Trending Errors
+                <small>&nbsp;Quick links for top trending Errors</small>
+            </h3>
+        </div>
+        <div id="form-domain" class="col-md-12 col-sm-12 col-xs-12">
+            <form class="form-horizontal">
+                <div class="row" style="margin:2%">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <h4><i class="fa fa-clock-o"></i>&nbsp;Top 10 Latest Errors</h4>
+                        <hr />
+                        <marquee behavior="scroll"  scrollamount="4" direction="up" onmouseover="this.setAttribute('scrollamount', 0, 0);" onmouseout="this.setAttribute('scrollamount', 4, 0);" style="height:400px!important">
+                            <div id="dvTopLatestErrors"></div>
+                        </marquee>
+                       
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <h4><i class="fa fa-toggle-right"></i>&nbsp;Top 10 Most Searched Errors</h4>
+                        <hr />
+                        <marquee behavior="scroll" scrollamount="4" direction="down"  onmouseover="this.setAttribute('scrollamount', 0, 0);" onmouseout="this.setAttribute('scrollamount', 4, 0);" style="height:400px!important">
+                            <div id="dvTopSearchedErrors"></div>
+                        </marquee>
+                    </div>
+                </div>
+                @*<h4><i class="fa fa-clock-o"></i>&nbsp;Top 10 Latest Errors</h4>
+                <hr/>
+                <marquee behavior="scroll" scrollamount="4" direction="up">
+                   <div id="dvTopLatestErrors"></div>
+                </marquee>
+                <div class="clearfix"/>
+
+                <h4><i class="fa fa-toggle-right"></i>&nbsp;Top 10 Most Searched Errors</h4>
+                <hr/>
+                <marquee behavior="scroll"  scrollamount="4" direction="down">
+                    <div id="dvTopSearchedErrors"></div>
+                </marquee>*@
+
+            </form>
+        </div>
+    </div>
+</div>

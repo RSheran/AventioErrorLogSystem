@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/Page/RuntimeErrorTrace.js"></script>
+<div class="container-fluid">
+    <div class="row">
+        <div class="page-header" style="margin-top: -10px; margin-left: 2%">
+            <h3>
+                Manage Runtime Errors
+                <small>&nbsp;view/remove runtime errors</small>
+            </h3>
+        </div>
+        <div id="form-domain" class="col-md-12 col-sm-12 col-xs-12">
+            <form class="form-horizontal">
+                <div class="row" style="margin-left:2%;">
+                    <div class="alert alert-success col-md-8 col-sm-6 col-xs-4" role="alert" id="dvAlert">
+                       <i class="glyphicon glyphicon-info-sign"></i>&nbsp;  No runtime errors are available at the moment.The system is running smoothly.
+                    </div>
+                </div>
+
+                <div class="row" style="margin-left:2%;overflow-x:scroll" id="dvErrorTraceTable">
+                    <table class="display table-bordered" id="tblRuntimeErrorTrace" cellspacing="0" style="margin-top: 10%">
+                        <thead>
+                            <tr>
+
+                                <th style="font-weight:bold">Timestamp</th>
+                                <th style="font-weight:bold">Error Source</th>
+                                <th style="font-weight:bold">Username</th>
+                                <th style="font-weight:bold">Runtime Error</th>
+                                <th style="font-weight:bold">Select</th>
+
+
+                            </tr>
+                        </thead>
+                      
+
+                    </table>
+                </div>
+                <div class="row">
+                    <div style="float: right;margin-top:2%" id="dvBtnControlGroup">
+                        <button type="button" id="btnRefresh" class="btn btn-md btn-default" style="margin-right: 10px">
+                        <i class="glyphicon glyphicon-refresh"></i>&nbsp;Refresh
+                        </button>
+                        <button type="button" id="btnReset" class="btn btn-md btn-default" style="margin-right: 10px">
+                            Reset
+                        </button>
+                        <button type="button" id="btnDeleteSelected" class="btn btn-md btn-primary">
+                            Delete
+                        </button>
+                        <button type="button" id="btnDeleteAll" class="btn btn-md btn-info">
+                            Delete All
+                        </button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
